@@ -18,22 +18,10 @@ Routr is  powerful and flexible routing engine and if used properly it can reduc
   <!html>
   <html>
     <head>
-      <script src="/director.js"></script>
+      <script src="js/libs/routes.debug.js"></script>
       <script>
 
-        var author = function () { /* ... */ },
-            books = function () { /* ... */ },
-            viewBook = function(bookId) { /* bookId is populated. */ };
-
-        var routes = {
-          '/author': author,
-          '/books': [books, function() { /* An inline route handler. */ }],
-          '/books/view/:bookId': viewBook
-        };
-
-        var router = Router(routes);
-        router.init();
-
+       
       </script>
     </head>
     <body>
