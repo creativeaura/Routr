@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 	<title>Hash JS</title>
 	<meta name="description" content="">
   	<meta name="author" content="">
@@ -85,35 +85,21 @@
 		function init(){
       
 			G.Routes.addRoute('/news/:title/:id/:slug',function(data){
-      document.getElementById('main').innerHTML += "<br>----------------------------------";  
-        document.getElementById('main').innerHTML += "<br>Articles";
-        document.getElementById('main').innerHTML += "<br>Title :: " + data.title;
-        document.getElementById('main').innerHTML += "<br>ID ::" + data.id;
-        document.getElementById('main').innerHTML += "<br>Slug ::" + data.slug;
+        document.getElementById('main').innerHTML += "<br>News with id " + data.id + "and Title " + data.title + " selected";
       });
 
       G.Routes.addRoute('/foo');
       
       G.Routes.addRoute('/news/:id',function(data){ 
-        document.getElementById('main').innerHTML += "<br>----------------------------------";
-        document.getElementById('main').innerHTML += "<br>News";
-        document.getElementById('main').innerHTML += "<br>ID" + data.id;
-      });
-
-      G.Routes.addRoute('/news/:id',function(data){ 
-        document.getElementById('main').innerHTML += "<br>----------------------------------";
-        document.getElementById('main').innerHTML += "<br>News";
-        document.getElementById('main').innerHTML += "<br>ID" + data.id;
+        document.getElementById('main').innerHTML += "<br>News with id " + data.id + " selected";
       });
 
       G.Routes.addRoute('/contact',function(data){
-        document.getElementById('main').innerHTML += "<br>----------------------------------";
-        document.getElementById('main').innerHTML += "<br>Show the Contact page";
+        document.getElementById('main').innerHTML += "<br>Contact Page Selected";
       });
 
 			G.Routes.change(function(data){
-        document.getElementById('main').innerHTML += "<br>----------------------------------";
-				document.getElementById('main').innerHTML += "<br>" + data;
+				document.getElementById('main').innerHTML += "<br>" + data + " Selected";
 			});
 
 		}
