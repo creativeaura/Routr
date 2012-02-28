@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>Hash JS</title>
+	<title>Routr JS</title>
 	<meta name="description" content="">
   	<meta name="author" content="">
   	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -80,29 +80,27 @@
 	</div>
 	<script type="text/javascript" src='js/libs/routes.debug.js'></script>
 	<script type="text/javascript">
-		window.onload = init;
+        window.onload = init;
 
 		function init(){
-      
-			G.Routes.addRoute('/news/:title/:id/:slug',function(data){
-        document.getElementById('main').innerHTML += "<br>News with id " + data.id + "and Title " + data.title + " selected";
-      });
-
-      G.Routes.addRoute('/foo');
-      
-      G.Routes.addRoute('/news/:id',function(data){ 
-        document.getElementById('main').innerHTML += "<br>News with id " + data.id + " selected";
-      });
-
-      G.Routes.addRoute('/contact',function(data){
-        document.getElementById('main').innerHTML += "<br>Contact Page Selected";
-      });
-
-			G.Routes.change(function(data){
-				document.getElementById('main').innerHTML += "<br>" + data + " Selected";
-			});
-
-		}
+    		G.Routes.addRoute('/news/:title/:id/:slug',function(data){
+                document.getElementById('main').innerHTML += "<br>News with id " + data.id + "and Title " + data.title + " selected";
+            });
+    
+            G.Routes.addRoute('/foo');
+          
+            G.Routes.addRoute('/news/:id',function(data){ 
+                document.getElementById('main').innerHTML += "<br>News with id " + data.id + " selected";
+            });
+    
+            G.Routes.addRoute('/contact',function(data){
+                document.getElementById('main').innerHTML += "<br>Contact Page Selected";
+            });
+    
+        	G.Routes.change(function(data){
+        		document.getElementById('main').innerHTML += "<br>" + data + " Selected";
+        	});
+	    }
 	</script>
 </body>
 </html>
