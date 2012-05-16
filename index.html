@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Routr by creativeaura</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Routr</h1>
+        <p>JavaScript Routing Engine</p>
+        <p class="view"><a href="https://github.com/creativeaura/Routr">View the Project on GitHub <small>creativeaura/Routr</small></a></p>
+        <ul>
+          <li><a href="https://github.com/creativeaura/Routr/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/creativeaura/Routr/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/creativeaura/Routr">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Routr</h1>
+
+<p>Routr is a simple routing library that enables you to listen to url patters you difine. This library was started as an experiment after been inspired by alot of popular libraries.</p>
+
+<p>Routr is  powerful and flexible routing engine and if used properly it can reduce code complexity by decoupling objects and also by abstracting navigation paths and server requests.</p>
+
+<h2>USAGE</h2>
+
+<ul>
+<li><a href="#api">API Documentation</a></li>
+<li><a href="#examples">Example</a></li>
+</ul><h3>API Documentation</h3>
+
+<ul>
+<li>
+<strong>change(callback)</strong> [Event]
+Event dispatched when there is a change in url hash</li>
+<li>
+<strong>addRoute(pattern,callback)</strong> [Method]
+Method allows us to add url pattern to the Route engine.</li>
+</ul><h3>Examples 1</h3>
+
+<p>Callback function gets triggered everytime there is a change in the hash tag.</p>
+
+<div class="highlight">
+<pre>  <span class="cp">&lt;!html&gt;</span>
+  <span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/libs/routes.debug.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+      <span class="nt">&lt;script&gt;</span>
+
+        <span class="nx">G</span><span class="p">.</span><span class="nx">Routes</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'main'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s2">"&lt;br&gt;"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="s2">" Selected"</span><span class="p">;</span>
+        <span class="p">});</span>
+      <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</pre>
+</div>
+
+
+<h3>Examples 2</h3>
+
+<p>You can also declare a routes pattern with one or more parameters. Everytime there is a change in the url string a callback function is triggers and a object with url params is returned. </p>
+
+<div class="highlight">
+<pre>  <span class="cp">&lt;!html&gt;</span>
+  <span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/libs/routes.debug.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+      <span class="nt">&lt;script&gt;</span>
+
+        <span class="nx">G</span><span class="p">.</span><span class="nx">Routes</span><span class="p">.</span><span class="nx">addRoute</span><span class="p">(</span><span class="s1">'/news/:title/:id/:slug'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'main'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s2">"&lt;br&gt;News with id "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">"and Title "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">" selected"</span><span class="p">;</span>
+        <span class="p">});</span>
+
+
+        <span class="nx">G</span><span class="p">.</span><span class="nx">Routes</span><span class="p">.</span><span class="nx">addRoute</span><span class="p">(</span><span class="s1">'/news/:id'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span> 
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'main'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s2">"&lt;br&gt;News with id "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">" selected"</span><span class="p">;</span>
+        <span class="p">});</span>
+      <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</pre>
+</div>
+
+
+<h2>Licence</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2012 <a href="http://www.twitter.com/CreativeAura">@CreativeAura</a>.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/creativeaura">creativeaura</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
